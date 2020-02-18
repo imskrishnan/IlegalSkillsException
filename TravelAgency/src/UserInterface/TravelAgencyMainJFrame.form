@@ -73,6 +73,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Airliner"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAirlinerActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="30" y="220" width="130" height="50"/>
@@ -98,7 +101,7 @@
                   <Font name="Century Gothic" size="22" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="26" green="22" red="eb" type="rgb"/>
+                  <Color blue="ff" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="&lt;html&gt;TRAVEL AGENCY&lt;br/&gt; MANAGEMENT SYSTEM&lt;/html&gt;"/>

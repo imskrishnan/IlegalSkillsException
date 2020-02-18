@@ -56,6 +56,11 @@ public class TravelAgencyMainJFrame extends javax.swing.JFrame {
         leftJPanel.add(btnTravelAgency, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 130, 50));
 
         btnAirliner.setText("Airliner");
+        btnAirliner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAirlinerActionPerformed(evt);
+            }
+        });
         leftJPanel.add(btnAirliner, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 130, 50));
 
         btnCustomer.setText("Customer");
@@ -67,7 +72,7 @@ public class TravelAgencyMainJFrame extends javax.swing.JFrame {
         leftJPanel.add(btnCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 130, 50));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(235, 34, 38));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("<html>TRAVEL AGENCY<br/> MANAGEMENT SYSTEM</html>");
         leftJPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 190, 110));
@@ -97,12 +102,17 @@ public class TravelAgencyMainJFrame extends javax.swing.JFrame {
 
     private void btnTravelAgencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTravelAgencyActionPerformed
         // TODO add your handling code here:
+        
+                
+    }//GEN-LAST:event_btnTravelAgencyActionPerformed
+
+    private void btnAirlinerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAirlinerActionPerformed
+        // TODO add your handling code here:
         ManageAirlinerJPanel panel = new ManageAirlinerJPanel(cardSequenceJPanel, travelAgency);
         cardSequenceJPanel.add("ManageAirlinerJPanel", panel);
         CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
         layout.next(cardSequenceJPanel);
-                
-    }//GEN-LAST:event_btnTravelAgencyActionPerformed
+    }//GEN-LAST:event_btnAirlinerActionPerformed
 
     /**
      * @param args the command line arguments
