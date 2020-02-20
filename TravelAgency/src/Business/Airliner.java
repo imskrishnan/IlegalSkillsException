@@ -12,18 +12,15 @@ import java.util.ArrayList;
  * @author Sumesh
  */
 public class Airliner {
-    private String airlinerName;
-    private String airlinerHeadquaters;
+    private String airlinerName;    
     private int airlinerFleetSize;
     public ArrayList<Flight> flightList;
-    public Airliner(String airlinerName, String airlinerHeadquaters){
+    
+    public Airliner(String airlinerName){
         
        flightList = new ArrayList<Flight>();
-       this.airlinerName = airlinerName;
-       this.airlinerHeadquaters = airlinerHeadquaters;
-       
-        Flight flight1 = new Flight("Jet Blue","EM-1283", "DUBAI", "BOSTON", "20:00", "23:00", 450, 25);
-        flightList.add(flight1);
+       this.airlinerName = airlinerName;   
+               
     }
 
     public String getAirlinerName() {
@@ -32,15 +29,7 @@ public class Airliner {
 
     public void setAirlinerName(String airlinerName) {
         this.airlinerName = airlinerName;
-    }
-
-    public String getAirlinerHeadquaters() {
-        return airlinerHeadquaters;
-    }
-
-    public void setAirlinerHeadquaters(String airlinerHeadquaters) {
-        this.airlinerHeadquaters = airlinerHeadquaters;
-    }
+    }    
 
     public int getAirlinerFleetSize() {
         return airlinerFleetSize;
@@ -65,8 +54,7 @@ public class Airliner {
     
     public void deleteFlight(Flight flight) {
         flightList.remove(flight);
-    }
-     
+    }     
      
     @Override
     public String toString() {

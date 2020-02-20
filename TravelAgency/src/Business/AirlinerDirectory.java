@@ -13,16 +13,11 @@ import java.util.ArrayList;
  */
 public class AirlinerDirectory {
     public ArrayList<Airliner> airlinerList;
-    
+   
      public AirlinerDirectory()
     {
         this.airlinerList = new ArrayList<Airliner>();
-//        Airliner airliner1 = new Airliner("Jet Blue", "Canada");
-////        Airliner airliner2 = new Airliner("Air India", "India");
-////        Airliner airliner3 = new Airliner("Delta", "Atlanta");
-//        airlinerList.add(airliner1);
-////        airlinerList.add(airliner2);
-////        airlinerList.add(airliner3);
+        
     } 
 
     public ArrayList<Airliner> getAirlinerList() {
@@ -33,9 +28,22 @@ public class AirlinerDirectory {
         this.airlinerList = airlinerList;
     }
 
-    public Airliner addAirliner(String airlinerName, String airlinerHeadquaters) {
-       Airliner airliner = new Airliner(airlinerName, airlinerHeadquaters);
+    public Airliner addAirliner(String airlinerName) {
+       Airliner airliner = new Airliner(airlinerName);
        airlinerList.add(airliner);
        return airliner;
+    }
+    
+    public void deleteAirliner(Airliner airliner){
+        airlinerList.remove(airliner);
+    }
+    
+    public Airliner searchAirliner(String airlinerName){
+        for(Airliner airliner:airlinerList) {
+            if(airliner.getAirlinerName().equalsIgnoreCase(airlinerName)) {
+                return airliner;
+            }
+        }
+        return null;
     }
 }
