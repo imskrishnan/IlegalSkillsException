@@ -85,6 +85,34 @@ public class AnalysisHelper {
         System.out.println("The average number of likes per comment is " + average_likes);
      }
     
+    // @author Santosh
+    // This is a method to find the most liked comments
+    public void getPostByMostLikedComments(){
+        Map<Integer, Post> postHashMap = DataStore.getInstance().getPosts();
+        Map<Integer,Integer> tempPostHashMap = new HashMap<>();
+        for(Post p:postHashMap.values()){
+            for(Comment c:p.getComments()){
+            int likes = 0;
+            if(tempPostHashMap.containsKey(p.getPostId())){
+                likes = tempPostHashMap.get(p.getPostId());
+            }
+            likes+=c.getLikes();
+            tempPostHashMap.put(p.getPostId(), likes);
+            }
+        }
+        int max = 0;
+        int maxId = 0;
+        for(int id:tempPostHashMap.keySet()){
+            if(tempPostHashMap.get(id)>max){
+                max = tempPostHashMap.get(id);
+                maxId = id;
+            }
+        }
+         System.out.println("Post with most liked comments: " + max + "\n"
+                + postHashMap.get(maxId)+maxId);
+    }
+
+    
     /**
      * Top 5 proactive users overall (sum of comments, posts and likes)
      * @author Sumesh
