@@ -68,7 +68,7 @@ public class AnalysisHelper {
         for (int i = 0; i < commentList.size() && i < 5; i++) {
             System.out.println(commentList.get(i));
         }
-    }
+    }    
     
     //@author Santhosh
     public void getAverageLikesPerComment(){
