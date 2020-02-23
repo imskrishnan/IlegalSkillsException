@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class AirlinerDirectory {
     public ArrayList<Airliner> airlinerList;
    
-     public AirlinerDirectory()
-    {
+    public AirlinerDirectory(){
+        
         this.airlinerList = new ArrayList<Airliner>();
         
     } 

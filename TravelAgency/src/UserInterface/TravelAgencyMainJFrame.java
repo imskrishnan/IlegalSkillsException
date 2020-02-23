@@ -7,6 +7,7 @@ package UserInterface;
 
 import Business.TravelAgency;
 import UserInterface.ManageAirline.ManageAirlinerJPanel;
+import UserInterface.TravelAgencyWelcome.WelcomeJPanel;
 import java.awt.CardLayout;
 
 /**
@@ -21,7 +22,7 @@ public class TravelAgencyMainJFrame extends javax.swing.JFrame {
     private TravelAgency travelAgency;
     public TravelAgencyMainJFrame() {
         initComponents();
-        this.travelAgency = travelAgency;
+        this.travelAgency = new TravelAgency();
     }
 
     /**
@@ -36,46 +37,33 @@ public class TravelAgencyMainJFrame extends javax.swing.JFrame {
         jSplitPanel = new javax.swing.JSplitPane();
         leftJPanel = new javax.swing.JPanel();
         btnTravelAgency = new javax.swing.JButton();
-        btnAirliner = new javax.swing.JButton();
-        btnCustomer = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         cardSequenceJPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1200, 600));
 
+        leftJPanel.setBackground(new java.awt.Color(255, 255, 255));
         leftJPanel.setMinimumSize(new java.awt.Dimension(230, 510));
-        leftJPanel.setPreferredSize(new java.awt.Dimension(250, 766));
+        leftJPanel.setPreferredSize(new java.awt.Dimension(300, 766));
         leftJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnTravelAgency.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
+        btnTravelAgency.setForeground(new java.awt.Color(153, 0, 0));
         btnTravelAgency.setText("Travel Agency");
+        btnTravelAgency.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0)));
         btnTravelAgency.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTravelAgencyActionPerformed(evt);
             }
         });
-        leftJPanel.add(btnTravelAgency, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 130, 50));
+        leftJPanel.add(btnTravelAgency, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 210, 50));
 
-        btnAirliner.setText("Airliner");
-        btnAirliner.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAirlinerActionPerformed(evt);
-            }
-        });
-        leftJPanel.add(btnAirliner, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 130, 50));
-
-        btnCustomer.setText("Customer");
-        btnCustomer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCustomerActionPerformed(evt);
-            }
-        });
-        leftJPanel.add(btnCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 130, 50));
-
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel1.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("<html>TRAVEL AGENCY<br/> MANAGEMENT SYSTEM</html>");
-        leftJPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 190, 110));
+        leftJPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 270, 180));
 
         jSplitPanel.setLeftComponent(leftJPanel);
 
@@ -96,23 +84,16 @@ public class TravelAgencyMainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCustomerActionPerformed
-
     private void btnTravelAgencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTravelAgencyActionPerformed
         // TODO add your handling code here:
-        
-                
-    }//GEN-LAST:event_btnTravelAgencyActionPerformed
-
-    private void btnAirlinerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAirlinerActionPerformed
-        // TODO add your handling code here:
-        ManageAirlinerJPanel panel = new ManageAirlinerJPanel(cardSequenceJPanel, travelAgency);
+        WelcomeJPanel panel = new WelcomeJPanel(cardSequenceJPanel, travelAgency);
         cardSequenceJPanel.add("ManageAirlinerJPanel", panel);
         CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
         layout.next(cardSequenceJPanel);
-    }//GEN-LAST:event_btnAirlinerActionPerformed
+ 
+        
+                
+    }//GEN-LAST:event_btnTravelAgencyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,8 +131,6 @@ public class TravelAgencyMainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAirliner;
-    private javax.swing.JButton btnCustomer;
     private javax.swing.JButton btnTravelAgency;
     private javax.swing.JPanel cardSequenceJPanel;
     private javax.swing.JLabel jLabel1;
