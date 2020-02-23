@@ -129,6 +129,66 @@ public class AnalysisHelper {
                 +postList.get(0));
     }
     
+    //@author Krishna
+    public void getFiveInactiveUsersByPostNum(){
+        
+        Map<Integer,Post> post = DataStore.getInstance().getPosts();
+        List<Post> postList = new ArrayList<>(post.values());
+        Map<Integer,Integer> userPostCount = new HashMap<>();
+     
+        for(Post siglePost : postList){
+            int userId = siglePost.getUserId();
+            if(!userPostCount.containsKey(userId)){
+                int postNum = 1;
+                userPostCount.put(userId, postNum);   
+            }else{
+                int postNum = userPostCount.get(userId);
+                userPostCount.put(userId, ++postNum);
+            }
+        }
+        
+        Map<Integer, Integer> sortedUserPostCount = userPostCount.entrySet()
+                .stream()
+                .sorted(Map.Entry.<Integer, Integer>comparingByValue())
+                .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1,e2) -> e1, LinkedHashMap::new));
+        
+        System.out.println(sortedUserPostCount);
+        List<Integer> userList = new ArrayList<>(sortedUserPostCount.keySet());
+        System.out.println("Five most Inactive user by post number: ");
+        for(int i=0;i<5;i++){
+            System.out.print("#" + (i+1) +" UserId: " + userList.get(i) + " --- ");
+            System.out.println(DataStore.getInstance().getUsers().get(userList.get(i)));
+        }        
+    }
+    
+    //@author Krishna
+    public void getFiveInactiveUsersByCreateCommentsNum(){
+        Map<Integer, Comment> commentsMap = DataStore.getInstance().getComments();
+        Map<Integer, Integer> userCommentCount = new HashMap<>();
+        commentsMap.entrySet()
+                .stream()
+                .forEach(e1 -> {
+                    if(userCommentCount.containsKey(e1.getValue().getUserId()))
+                        userCommentCount.put(e1.getValue().getUserId(), userCommentCount.get(e1.getValue().getUserId()) +1);
+                    else{
+                        userCommentCount.put(e1.getValue().getUserId(), 1);
+                    }
+                });
+        
+        Map<Integer,Integer> sortedUserCommentCount = userCommentCount.entrySet()
+                .stream()
+                .sorted(Map.Entry.<Integer,Integer>comparingByValue())
+                .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1,e2) -> e1, LinkedHashMap::new));
+        
+        System.out.println(sortedUserCommentCount);
+        List<Integer> userList = new ArrayList<>(sortedUserCommentCount.keySet());
+        System.out.println("Five most Inactive user by create comments number: ");
+        for(int i=0;i<5;i++){
+            System.out.print("#" + (i+1) +" UserId: " + userList.get(i) + " --- ");
+            System.out.println(DataStore.getInstance().getUsers().get(userList.get(i)));
+        }        
+    }
+    
     /**
      * Top 5 proactive users overall (sum of comments, posts and likes)
      * @author Sumesh

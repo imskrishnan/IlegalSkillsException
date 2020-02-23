@@ -95,11 +95,11 @@ public class Lab7 {
         // find user with Most Likes
         helper.userWithMostLikes();        
         helper.getFiveMostLikedComment();
-//        helper.getAverageLikesPerComment();
-//        helper.getFiveInactiveUsersByPostNum();
-//        helper.getFiveInactiveUsersByCreateCommentsNum();
-//        helper.getPostByMostLikedComments();
-//        helper.getPostByMostComments();        
+        helper.getAverageLikesPerComment();
+        helper.getFiveInactiveUsersByPostNum();
+        helper.getFiveInactiveUsersByCreateCommentsNum();
+        helper.getPostByMostLikedComments();
+        helper.getPostByMostComments();        
         helper.getFiveInactiveUsersByOverall();
         helper.getFiveProactiveUsersByOverall();
     }
