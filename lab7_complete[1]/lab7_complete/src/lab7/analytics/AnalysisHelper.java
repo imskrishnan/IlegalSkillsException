@@ -70,9 +70,64 @@ public class AnalysisHelper {
         }
     }
     
+    //@author Santhosh
+    public void getAverageLikesPerComment(){
+        Map<Integer,Comment> comments = DataStore.getInstance().getComments();
+        List<Comment> commentList = new ArrayList<>(comments.values());
+        double total_likes = 0;
+        int comment_num = commentList.size();
+        
+        for(Comment comment : commentList){
+            total_likes+=comment.getLikes();
+        }
+        
+        double average_likes = total_likes/comment_num;
+        System.out.println("The average number of likes per comment is " + average_likes);
+     }
     
+    // @author Santosh
+    // This is a method to find the most liked comments
+    public void getPostByMostLikedComments(){
+        Map<Integer, Post> postHashMap = DataStore.getInstance().getPosts();
+        Map<Integer,Integer> tempPostHashMap = new HashMap<>();
+        for(Post p:postHashMap.values()){
+            for(Comment c:p.getComments()){
+            int likes = 0;
+            if(tempPostHashMap.containsKey(p.getPostId())){
+                likes = tempPostHashMap.get(p.getPostId());
+            }
+            likes+=c.getLikes();
+            tempPostHashMap.put(p.getPostId(), likes);
+            }
+        }
+        int max = 0;
+        int maxId = 0;
+        for(int id:tempPostHashMap.keySet()){
+            if(tempPostHashMap.get(id)>max){
+                max = tempPostHashMap.get(id);
+                maxId = id;
+            }
+        }
+         System.out.println("Post with most liked comments: " + max + "\n"
+                + postHashMap.get(maxId)+maxId);
+    }
     
-    
+        //@author Santosh
+    public void getPostByMostComments(){
+         Map<Integer, Post> postHashMap = DataStore.getInstance().getPosts();
+        List<Post> postList = new ArrayList<>(postHashMap.values());
+        
+        
+        Collections.sort(postList, new Comparator<Post>() {
+            @Override
+            public int compare(Post p1, Post p2) {
+                return p2.getComments().size()-p1.getComments().size();
+            }
+        });
+        
+        System.out.println("Post with most comments: "+postList.get(0).getComments().size()+"\n"
+                +postList.get(0));
+    }
     
     /**
      * Top 5 proactive users overall (sum of comments, posts and likes)
