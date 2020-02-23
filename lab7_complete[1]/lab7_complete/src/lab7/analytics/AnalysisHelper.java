@@ -68,7 +68,7 @@ public class AnalysisHelper {
         for (int i = 0; i < commentList.size() && i < 5; i++) {
             System.out.println(commentList.get(i));
         }
-    }
+    }    
     
     //@author Santhosh
     public void getAverageLikesPerComment(){
@@ -128,6 +128,40 @@ public class AnalysisHelper {
         System.out.println("Post with most comments: "+postList.get(0).getComments().size()+"\n"
                 +postList.get(0));
     }
+    
+    //@author Krishna
+    public void getFiveInactiveUsersByPostNum(){
+        
+        Map<Integer,Post> post = DataStore.getInstance().getPosts();
+        List<Post> postList = new ArrayList<>(post.values());
+        Map<Integer,Integer> userPostCount = new HashMap<>();
+     
+        for(Post siglePost : postList){
+            int userId = siglePost.getUserId();
+            if(!userPostCount.containsKey(userId)){
+                int postNum = 1;
+                userPostCount.put(userId, postNum);   
+            }else{
+                int postNum = userPostCount.get(userId);
+                userPostCount.put(userId, ++postNum);
+            }
+        }
+        
+        Map<Integer, Integer> sortedUserPostCount = userPostCount.entrySet()
+                .stream()
+                .sorted(Map.Entry.<Integer, Integer>comparingByValue())
+                .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1,e2) -> e1, LinkedHashMap::new));
+        
+        System.out.println(sortedUserPostCount);
+        List<Integer> userList = new ArrayList<>(sortedUserPostCount.keySet());
+        System.out.println("Five most Inactive user by post number: ");
+        for(int i=0;i<5;i++){
+            System.out.print("#" + (i+1) +" UserId: " + userList.get(i) + " --- ");
+            System.out.println(DataStore.getInstance().getUsers().get(userList.get(i)));
+        }        
+    }
+    
+
     
     /**
      * Top 5 proactive users overall (sum of comments, posts and likes)
